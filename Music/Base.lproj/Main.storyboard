@@ -259,10 +259,13 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="artistImage" destination="ssF-kt-5es" id="ozz-6V-7hO"/>
+                        <outlet property="artistImageHeight" destination="JnS-n5-Ffy" id="UQv-cx-iee"/>
+                        <outlet property="artistImageWidth" destination="Nzp-X6-eDD" id="f0N-BZ-RWZ"/>
                         <outlet property="artistName" destination="Eq7-3H-yAY" id="01B-tv-sDS"/>
                         <outlet property="bottomStackView" destination="eBS-eM-yZH" id="k1T-b4-7Qt"/>
                         <outlet property="searchBar" destination="9HC-1h-gLK" id="eki-8K-LmN"/>
                         <outlet property="songsCV" destination="taT-hC-LmG" id="aq7-ls-oFO"/>
+                        <outlet property="topStackHeight" destination="k1V-Eu-flK" id="Xdi-hW-Udo"/>
                         <outlet property="topStackView" destination="PGm-9L-fW5" id="85x-So-Dwc"/>
                         <segue destination="tsb-vv-kAT" kind="presentation" identifier="ShowPlayer" id="xnc-Cf-SM6"/>
                     </connections>
@@ -303,59 +306,90 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="k1p-ct-a75">
-                                <rect key="frame" x="80" y="559.5" width="254" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Qbf-up-gdr">
+                                <rect key="frame" x="32" y="471.5" width="350" height="214"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxF-w0-SvZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="31" height="70"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="backward.fill" catalog="system"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvT-d4-nbP">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="21.5"/>
+                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="heart" catalog="system"/>
                                         <connections>
-                                            <action selector="prevTapped:" destination="tsb-vv-kAT" eventType="touchUpInside" id="9B8-6g-uzp"/>
+                                            <action selector="heartTapped:" destination="tsb-vv-kAT" eventType="touchUpInside" id="4J2-tE-B43"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYa-aJ-XmH">
-                                        <rect key="frame" x="92" y="0.0" width="70" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="Pvw-ef-Sck"/>
-                                            <constraint firstAttribute="width" constant="70" id="oeg-95-12J"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="play.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="playTapped:" destination="tsb-vv-kAT" eventType="touchUpInside" id="til-cl-bhC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPu-Oz-vsK">
-                                        <rect key="frame" x="223" y="0.0" width="31" height="70"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="forward.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="nextTapped:" destination="tsb-vv-kAT" eventType="touchUpInside" id="8Op-pc-gkW"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="00a-3g-kxE">
+                                        <rect key="frame" x="0.0" y="53.5" width="350" height="58.5"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7c4-6p-TCT">
+                                                <rect key="frame" x="-2" y="0.0" width="354" height="31"/>
+                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="sliderValueChange:" destination="tsb-vv-kAT" eventType="valueChanged" id="mAa-rB-B2O"/>
+                                                </connections>
+                                            </slider>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="nra-cq-MfL">
+                                                <rect key="frame" x="0.0" y="38" width="350" height="20.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLx-Nu-08B">
+                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POK-V4-rvH">
+                                                        <rect key="frame" x="314.5" y="0.0" width="35.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="k1p-ct-a75">
+                                        <rect key="frame" x="0.0" y="144" width="350" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxF-w0-SvZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="70"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="backward.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="prevTapped:" destination="tsb-vv-kAT" eventType="touchUpInside" id="9B8-6g-uzp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYa-aJ-XmH">
+                                                <rect key="frame" x="123.5" y="0.0" width="103" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="Pvw-ef-Sck"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="play.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="playTapped:" destination="tsb-vv-kAT" eventType="touchUpInside" id="til-cl-bhC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPu-Oz-vsK">
+                                                <rect key="frame" x="246.5" y="0.0" width="103.5" height="70"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="forward.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="nextTapped:" destination="tsb-vv-kAT" eventType="touchUpInside" id="8Op-pc-gkW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvT-d4-nbP">
-                                <rect key="frame" x="194.5" y="467" width="25.5" height="65"/>
-                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="heart" catalog="system"/>
-                                <connections>
-                                    <action selector="heartTapped:" destination="tsb-vv-kAT" eventType="touchUpInside" id="4J2-tE-B43"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="k1p-ct-a75" firstAttribute="top" secondItem="LbO-UE-mLb" secondAttribute="bottom" constant="120" id="2jv-y0-uwb"/>
-                            <constraint firstItem="k1p-ct-a75" firstAttribute="leading" secondItem="2Rb-sY-ejn" secondAttribute="leading" constant="80" id="GWj-8c-7sc"/>
-                            <constraint firstItem="k1p-ct-a75" firstAttribute="top" secondItem="AvT-d4-nbP" secondAttribute="bottom" constant="27.5" id="IH3-et-P6i"/>
                             <constraint firstItem="2Rb-sY-ejn" firstAttribute="trailing" secondItem="LbO-UE-mLb" secondAttribute="trailing" constant="32" id="PYf-Gg-2Kl"/>
                             <constraint firstItem="LbO-UE-mLb" firstAttribute="leading" secondItem="2Rb-sY-ejn" secondAttribute="leading" constant="32" id="SuR-Ha-hcD"/>
-                            <constraint firstItem="2Rb-sY-ejn" firstAttribute="trailing" secondItem="k1p-ct-a75" secondAttribute="trailing" constant="80" id="ZYb-BD-UxW"/>
+                            <constraint firstItem="Qbf-up-gdr" firstAttribute="leading" secondItem="2Rb-sY-ejn" secondAttribute="leading" constant="32" id="cP3-Bb-Yd9"/>
+                            <constraint firstItem="Qbf-up-gdr" firstAttribute="top" secondItem="LbO-UE-mLb" secondAttribute="bottom" constant="32" id="djP-hv-t1n"/>
                             <constraint firstItem="LbO-UE-mLb" firstAttribute="top" secondItem="2Rb-sY-ejn" secondAttribute="top" constant="40" id="ehN-cc-ehr"/>
-                            <constraint firstItem="AvT-d4-nbP" firstAttribute="top" secondItem="LbO-UE-mLb" secondAttribute="bottom" constant="27.5" id="o6e-j0-4RS"/>
-                            <constraint firstItem="AvT-d4-nbP" firstAttribute="centerX" secondItem="iNa-ve-jFi" secondAttribute="centerX" id="vRM-7T-GrL"/>
+                            <constraint firstItem="2Rb-sY-ejn" firstAttribute="trailing" secondItem="Qbf-up-gdr" secondAttribute="trailing" constant="32" id="zZf-dB-27e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Rb-sY-ejn"/>
                     </view>
@@ -363,9 +397,12 @@
                     <connections>
                         <outlet property="artistName" destination="y2x-mv-DqA" id="Zn2-cd-NWJ"/>
                         <outlet property="coverImage" destination="38b-i7-t7N" id="AkC-Mn-irs"/>
+                        <outlet property="currentTimeLabel" destination="NLx-Nu-08B" id="fWH-gQ-4LF"/>
                         <outlet property="heartButton" destination="AvT-d4-nbP" id="KCz-ee-xfe"/>
                         <outlet property="playButton" destination="LYa-aJ-XmH" id="fLB-TA-hST"/>
+                        <outlet property="playerSlider" destination="7c4-6p-TCT" id="rlo-Ua-Ifh"/>
                         <outlet property="songName" destination="i63-qk-wGA" id="AaU-BZ-Vff"/>
+                        <outlet property="timeLabel" destination="POK-V4-rvH" id="xcC-j5-sUg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFr-6O-eSo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

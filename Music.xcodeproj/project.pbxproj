@@ -21,6 +21,7 @@
 		7D639EAD23E6CD3C00F5ECF8 /* JsonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D639EAC23E6CD3C00F5ECF8 /* JsonModels.swift */; };
 		7D639EB123E6F54400F5ECF8 /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D639EB023E6F54400F5ECF8 /* MusicData.swift */; };
 		7D639EB323E6F7A000F5ECF8 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D639EB223E6F7A000F5ECF8 /* Artist.swift */; };
+		7DE3E41823EC057500EB8360 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE3E41723EC057500EB8360 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		7D639EAC23E6CD3C00F5ECF8 /* JsonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModels.swift; sourceTree = "<group>"; };
 		7D639EB023E6F54400F5ECF8 /* MusicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicData.swift; sourceTree = "<group>"; };
 		7D639EB223E6F7A000F5ECF8 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		7DE3E41723EC057500EB8360 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +65,23 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		7D3A147A23EAB60F0077C34A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7D639EB023E6F54400F5ECF8 /* MusicData.swift */,
+				7D47568023E778100080EAB2 /* CoreDB.swift */,
+				7D0E5C9E23E8CC3C007FF24C /* Protocols.swift */,
+				7DE3E41723EC057500EB8360 /* Utilities.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		7D47565923E776580080EAB2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				7D639EAC23E6CD3C00F5ECF8 /* JsonModels.swift */,
 				7D639EB223E6F7A000F5ECF8 /* Artist.swift */,
+				7D0E5C9C23E8197D007FF24C /* Cells.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -96,10 +110,7 @@
 				7D639E9A23E4AD0300F5ECF8 /* Main.storyboard */,
 				7D0A400A23E715EA00EDCBBC /* View Controllers */,
 				7D47565923E776580080EAB2 /* Models */,
-				7D0E5C9C23E8197D007FF24C /* Cells.swift */,
-				7D639EB023E6F54400F5ECF8 /* MusicData.swift */,
-				7D47568023E778100080EAB2 /* CoreDB.swift */,
-				7D0E5C9E23E8CC3C007FF24C /* Protocols.swift */,
+				7D3A147A23EAB60F0077C34A /* Helpers */,
 				7D639E9D23E4AD0400F5ECF8 /* Assets.xcassets */,
 				7D639EA223E4AD0400F5ECF8 /* Info.plist */,
 				7D47567D23E7779A0080EAB2 /* CoreMusic.xcdatamodeld */,
@@ -180,6 +191,7 @@
 				7D639EAD23E6CD3C00F5ECF8 /* JsonModels.swift in Sources */,
 				7D47565823E76ADE0080EAB2 /* FavoritesController.swift in Sources */,
 				7D0E5C9F23E8CC3C007FF24C /* Protocols.swift in Sources */,
+				7DE3E41823EC057500EB8360 /* Utilities.swift in Sources */,
 				7D47568123E778100080EAB2 /* CoreDB.swift in Sources */,
 				7D0A400C23E71C1500EDCBBC /* PlayerController.swift in Sources */,
 				7D639E9923E4AD0300F5ECF8 /* SearchController.swift in Sources */,

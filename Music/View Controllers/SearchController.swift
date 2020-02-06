@@ -12,6 +12,10 @@ class SearchController: UIViewController {
     @IBOutlet weak var topStackView: UIStackView!
     @IBOutlet weak var bottomStackView: UIStackView!
     
+    @IBOutlet weak var topStackHeight: NSLayoutConstraint!
+    @IBOutlet weak var artistImageHeight: NSLayoutConstraint!
+    @IBOutlet weak var artistImageWidth: NSLayoutConstraint!
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var artistName: UILabel!
@@ -85,6 +89,34 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
         playerController.playlistDelegate = self
         
         present(playerController, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 10 {
+            topStackHeight.constant = 200
+            topStackView.axis = .vertical
+            topStackView.spacing = 8
+            artistImageHeight.constant = 160
+            artistImageWidth.constant = 160
+            
+            UIView.animate(withDuration: 0.5) {
+                self.artistImage.layer.cornerRadius = 80
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        topStackHeight.constant = 50
+        topStackView.axis = .horizontal
+        topStackView.spacing = 24
+        artistImageHeight.constant = 45
+        artistImageWidth.constant = 45
+        
+        UIView.animate(withDuration: 0.5) {
+            self.artistImage.layer.cornerRadius = 20
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
